@@ -56,12 +56,6 @@
      [:a {:class "px-8 py-2 text-lg font-medium text-white transition-colors duration-300 transform bg-indigo-600 rounded hover:bg-indigo-500"
           :href link-url} link-text]]]])
 
-#_(defn header [{:keys [nav splash]}]
-    [:header {:class "bg-gray-800"}
-     [comp-nav nav]
-     (when splash
-       [splash-message splash])])
-
 ;; footer
 
 (defn footer [{:keys [copyright right]}]
@@ -118,48 +112,41 @@
 
 ;; components that need refactoring
 
-(defn foto-right [{:keys [t1 link-url link-text img-url]}]
-  [:section {:class "bg-white"}
-   [:div {:class "max-w-5xl px-6 py-16 mx-auto"}
-    [:div {:class "items-center md:flex md:space-x-6"}
-     [:div {:class "md:w-1/2"}
-      [:h3 {:class "text-2xl font-semibold text-gray-800"}
-       "Lorem ipsum dolor sit "
-       [:br]
-       " amet, consectetur"]
-      [:p {:class "max-w-md mt-4 text-gray-600"}
-       t1
-       [:a {:href link-url
-            :class "block mt-8 text-indigo-700 underline"}
-        link-text]]
-      [:div {:class "mt-8 md:mt-0 md:w-1/2"}
-       [:div {:class "flex items-center justify-center"}
-        [:div {:class "max-w-md"}
-         [:img {:class "object-cover object-center w-full rounded-md shadow"
-                :style {:height "500px"}
-                :src img-url}]]]]]]]])
+(defn- foto [{:keys [img-url img-height]
+              :or {img-height "500px"}}]
+  [:div {:class "mt-8 md:mt-0 md:w-1/2"}
+   [:div {:class "flex items-center justify-center"}
+    [:div {:class "max-w-md"}
+     [:img {:class "object-cover object-center w-full rounded-md shadow"
+            :style {:height img-height}
+            :src img-url}]]]])
 
-(defn foto-left []
-  [:section {:class "bg-white"}
-   [:div {:class "max-w-5xl px-6 py-16 mx-auto"}
-    [:div {:class "items-center md:flex md:space-x-6"}
-     [:div {:class "md:w-1/2"}
-      [:div {:class "flex items-center justify-center"}
-       [:div {:class "max-w-md"}
-        [:img {:class "object-cover object-center w-full rounded-md shadow"
-               :style {:height "500px"}
-               :src "https://images.unsplash.com/photo-1616874535244-73aea5daadb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"}]]]]
-     [:div {:class "mt-8 md:mt-0 md:w-1/2"}
-      [:h3 {:class "text-2xl font-semibold text-gray-800"}
-       "Lorem ipsum dolor sit "
+(defn- foto-col-text [{:keys [title text]}]
+  [:div {:class "mt-8 md:mt-0 md:w-1/2"}
+   [:h3 {:class "text-2xl font-semibold text-gray-800"}
+    title
         ;[:br] 
         ;" amet, consectetur"
-       ]
-      [:p {:class "max-w-md mt-4 text-gray-600"}
-       "Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt inculpa qui officia deserunt mollit anim id est laborum."]
-      [:a {:href "#"
-           :class "block mt-8 text-indigo-700 underline"}
-       "Experienced team"]]]]])
+    ]
+   [:p {:class "max-w-md mt-4 text-gray-600"}
+    text]
+   [:a {:href "#"
+        :class "block mt-8 text-indigo-700 underline"}
+    "Experienced team"]])
+
+(defn foto-right [d]
+  [:section {:class "bg-white"}
+   [:div {:class "max-w-5xl px-6 py-16 mx-auto"}
+    [:div {:class "items-center md:flex md:space-x-6"}
+     [foto-col-text d]
+     [foto d]]]])
+
+(defn foto-left [d]
+  [:section {:class "bg-white"}
+   [:div {:class "max-w-5xl px-6 py-16 mx-auto"}
+    [:div {:class "items-center md:flex md:space-x-6"}
+     [foto d]
+     [foto-col-text d]]]])
 
 (defn people []
   [:section {:class "bg-white"}

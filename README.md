@@ -11,6 +11,7 @@ Everything related to web-site layout:
 ## Demo
 
 ```
+clojure -P -X:goldly   ; to fetch last released goldly
 clojure -X:webly 
 ```
 
