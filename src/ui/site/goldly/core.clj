@@ -5,9 +5,6 @@
 (add-cljs-namespace [ui.site.goldly.core]) ; add pinkie renderer
 
 
-
 (add-cljs-bindings {'ipsum ui.site.ipsum/ipsum
-                    'foto-bottom ui.site.template/foto-bottom
-                    
-                    })
+                    'foto-bottom ui.site.template/foto-bottom})
 

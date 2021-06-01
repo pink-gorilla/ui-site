@@ -5,8 +5,7 @@
    ;[ui.site.goldly.css :as css]
    [ui.site.template]
    [ui.site.ipsum]
-   [ui.site.layout]
-   ))
+   [ui.site.layout]))
 
 ;(register-component :p/markdown markdown-viewer)
 ;(rf/dispatch [:css/add-components css/components css/config])
