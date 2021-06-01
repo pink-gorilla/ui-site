@@ -41,7 +41,7 @@ jobs:
     - name: npm-install
       run: |
         clojure -X:npm-install
-        ./scripts/copy_res.sh
+    #    ./scripts/copy_res.sh
     #- name: clj-kondo
     #  run: clojure -M:lint
     #- name: test-clj
