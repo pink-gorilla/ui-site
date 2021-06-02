@@ -8,8 +8,13 @@
 
 (add-snippet {:type :goldly
               :category :site
-              :id :site-ipsum
+              :id :ipsum
               :filename "snippets/site/ipsum.clj"})
+
+(add-snippet {:type :goldly-clj
+              :category :site
+              :id :ipsum-sidebar
+              :filename "snippets/site/ipsum_sidebar.clj"})
 
 (add-snippet {:type :goldly
               :category :site
