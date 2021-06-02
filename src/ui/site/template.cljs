@@ -1,8 +1,10 @@
 (ns ui.site.template
   (:require
-   [reagent.core :as r]))
+   [reagent.core :as r]
+   [re-frame.core :as rf]))
 
 ;; helper
+
 
 (defn- into-text [el t]
   (if (string? t)
@@ -13,12 +15,16 @@
 
 ;; header
 
-(defn- menu-item [{:keys [text link special?]}]
+(defn- alink  [{:keys [text link dispatch class]}]
+  [:a (merge {:class class}
+             (when link {:href link})
+             (when dispatch {:on-click #(rf/dispatch dispatch)}))
+   text])
+
+(defn- menu-item [{:keys [text link dispatch special?] :as l}]
   (if special?
-    [:a {:class "px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400"
-         :href link} text]
-    [:a {:class "text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400"
-         :href link} text]))
+    [alink (assoc l :class "px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-indigo-400")]
+    [alink (assoc l :class "text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-indigo-400")]))
 
 (defn header-menu [{:keys [brand brand-link items]}]
   (let [open? (r/atom false)]
