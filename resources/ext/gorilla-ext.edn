@@ -1,0 +1,32 @@
+{:name "ui-site"
+ :clj-require []
+ :cljs-namespace [ui.site.template
+                  ui.site.ipsum
+                  ui.site.layout]
+ :cljs-bindings {'ipsum ui.site.ipsum/ipsum
+
+                 'sidebar-layout ui.site.layout/sidebar-layout
+                 'main-with-header ui.site.layout/main-with-header
+
+                 'foto-bottom ui.site.template/foto-bottom
+                 'foto-right ui.site.template/foto-right
+                 'foto-left ui.site.template/foto-left
+
+                 'message-button ui.site.template/message-button
+
+                 'people ui.site.template/people
+                 'bullet-points ui.site.template/bullet-points
+                 'fotos-with-text ui.site.template/fotos-with-text}
+ :cljs-ns-bindings {}
+ :snippets [{:type :goldly
+             :category :site
+             :id :ipsum
+             :filename "snippets/site/ipsum.clj"}
+            {:type :goldly-clj
+             :category :site
+             :id :ipsum-sidebar
+             :filename "snippets/site/ipsum_sidebar.clj"}
+            {:type :goldly
+             :category :site
+             :id :template
+             :filename "snippets/site/template.clj"}]}

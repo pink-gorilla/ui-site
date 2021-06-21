@@ -1,17 +1,17 @@
 {:webly {:title "UI-Site demo"
          :icon "/r/webly/pink-gorilla-32.png"
-         :lein-cljs-profile ""
-         :ns-cljs-app [demo.app]
-         :bundle-entry  "demo.app.start ();"
-         :start-user-app [:demo/init]
-         :user-routes-app "demo.routes/routes-app"
-         :user-routes-api "demo.routes/routes-api"}
+         :routes {:api {}
+                  :app {"" :demo/main ; so / route goes also to :goldly/about
+                        "ipsum" :demo/ipsum}}
+         :ns-cljs [demo.events
+                   demo.page.main
+                   demo.page.ipsum]
+         :start-user-app [:demo/init]}
 
  :google-analytics {:enabled true} ; set to false to disable google-analytics tracking.
 
  :timbre-loglevel [[#{"org.eclipse.jetty.*"} :info]
                    [#{"webly.ws.*"} :debug]
                    [#{"webly.*"} :info]
-                   [#{"*"} :debug]]
- }
+                   [#{"*"} :debug]]}
 

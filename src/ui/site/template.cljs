@@ -5,7 +5,6 @@
 
 ;; helper
 
-
 (defn- into-text [el t]
   (if (string? t)
     (into el t)
