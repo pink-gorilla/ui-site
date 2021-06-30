@@ -41,7 +41,7 @@
                                         }}
    :exec-fn goldly-server.app/goldly-server-run!
    :exec-args {:profile "npm-install"
-               :config {:goldly {:extensions []}}}}
+               :config {:goldly {}}}}
 
   :goldly
   {:extra-deps {org.pinkgorilla/goldly {:mvn/version "RELEASE"
@@ -49,7 +49,7 @@
                                         }}
    :exec-fn goldly-server.app/goldly-server-run!
    :exec-args {:profile "watch"
-               :config {:goldly {:extensions []}}}}
+               :config {:goldly {}}}}
 
   :webly
   {:extra-deps {org.pinkgorilla/webly {:mvn/version "RELEASE"}}
