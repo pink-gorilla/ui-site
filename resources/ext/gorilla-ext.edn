@@ -18,6 +18,14 @@
                            'people ui.site.template/people
                            'bullet-points ui.site.template/bullet-points
                            'fotos-with-text ui.site.template/fotos-with-text}}
+
+ :theme {:available  {}
+         :current {}}
+
+ ; modules and pinkie not yet via loader
+ :pinkie {}
+ :modules {}
+
  :snippets [{:type :goldly
              :category :site
              :id :ipsum
