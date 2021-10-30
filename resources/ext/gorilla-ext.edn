@@ -6,6 +6,7 @@
  :cljs-bindings {}
  :cljs-ns-bindings {'site {'ipsum ui.site.ipsum/ipsum
 
+                           'header-menu ui.site.layout/header-menu
                            'sidebar-layout ui.site.layout/sidebar-layout
                            'main-with-header ui.site.layout/main-with-header
 
