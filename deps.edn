@@ -39,7 +39,7 @@
   {:extra-deps {org.pinkgorilla/goldly {:mvn/version "RELEASE"
                                         :exclusions  [org.pinkgorilla/ui-site]
                                         }}
-   :exec-fn goldly-server.app/goldly-server-run!
+   :exec-fn goldly.app/goldly-server-run!
    :exec-args {:profile "npm-install"
                :config {:goldly {}}}}
 
@@ -47,16 +47,9 @@
   {:extra-deps {org.pinkgorilla/goldly {:mvn/version "RELEASE"
                                         :exclusions  [org.pinkgorilla/ui-site]
                                         }}
-   :exec-fn goldly-server.app/goldly-server-run!
-   :exec-args {:profile "watch"
-               :config {:goldly {}}}}
-
-  :webly
-  {:extra-deps {org.pinkgorilla/webly {:mvn/version "RELEASE"}}
-   :extra-paths ["webly"]
-   :exec-fn webly.user.app.app/webly-run
-   :exec-args {:profile "watch"
-               :config "webly/demo/demo.edn"}}
+   :exec-fn goldly.app/goldly-server-run!
+   :exec-args {:profile "watch2"
+               :config "demo/demo.edn"}}
 
 
 ;

@@ -5,9 +5,13 @@
                   ui.site.layout]
  :cljs-bindings {}
  :cljs-ns-bindings {'site {'ipsum ui.site.ipsum/ipsum
-   
+
                            'sidebar-layout ui.site.layout/sidebar-layout
                            'main-with-header ui.site.layout/main-with-header
+
+
+                           'header-menu ui.site.template/header-menu
+                           'footer ui.site.template/footer
 
                            'foto-bottom ui.site.template/foto-bottom
                            'foto-right ui.site.template/foto-right
@@ -15,24 +19,18 @@
                            'message-button ui.site.template/message-button
                            'people ui.site.template/people
                            'bullet-points ui.site.template/bullet-points
-                           'fotos-with-text ui.site.template/fotos-with-text}}
+                           'fotos-with-text ui.site.template/fotos-with-text
+                           'cols-three ui.site.template/cols-three
+                           'splash-message ui.site.template/splash-message
+
+
+
+
+
+;                           
+                           }}
 
  :theme {:available  {}
          :current {}}
-
- ; modules and pinkie not yet via loader
  :pinkie {}
- :modules {}
-
- :snippets [{:type :goldly
-             :category :site
-             :id :ipsum
-             :filename "snippets/site/ipsum.clj"}
-            {:type :goldly-clj
-             :category :site
-             :id :ipsum-sidebar
-             :filename "snippets/site/ipsum_sidebar.clj"}
-            {:type :goldly
-             :category :site
-             :id :template
-             :filename "snippets/site/template.clj"}]}
+ :modules {}}
