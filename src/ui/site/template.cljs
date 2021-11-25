@@ -28,8 +28,10 @@
 (defn header-menu [{:keys [brand brand-link items]}]
   (let [open? (r/atom false)]
     (fn []
-      [:header {:class "bg-gray-800 h-16"}
-       [:nav {:class "container px-6 py-4 mx-auto md:flex md:justify-between md:items-center"}
+      [:header {:class (str "bg-gray-800 "
+                            (if @open? "md:h-full" "h-16"))}
+
+       [:nav {:class "container  px-6 py-4 mx-auto md:flex md:justify-between md:items-center"}
         [:div {:class "flex items-center justify-between"}
          [:a {:class "text-xl font-bold text-white transition-colors duration-300 transform md:text-2xl hover:text-indigo-400"
               :href brand-link} brand]
@@ -45,8 +47,9 @@
                     :d "M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"}]]]]]
     ; Mobile Menu open: \"block\", Menu closed: \"hidden\"
 
-        (into [:div {:class (str (if @open? "flex" "hidden")
-                                 " flex-col mt-2 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0")}]
+        (into [:div {:class (str (if @open? "flex " "hidden ")
+                                 "flex-col mt-2 space-y-4 "
+                                 "md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0")}]
               (map menu-item items))]])))
 
 ;; footer
