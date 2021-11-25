@@ -36,17 +36,18 @@
    :main-opts ["-m" "garamond.main"]}
 
   :npm-install
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "RELEASE"
-                                        :exclusions  [org.pinkgorilla/ui-site]
-                                        }}
+  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.453"
+                                        :exclusions  [org.pinkgorilla/ui-site]}}
    :exec-fn goldly.app/goldly-server-run!
    :exec-args {:profile "npm-install"
                :config {:goldly {}}}}
 
   :goldly
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "RELEASE"
-                                        :exclusions  [org.pinkgorilla/ui-site]
-                                        }}
+  {:extra-deps {org.pinkgorilla/reval {:local/root "../reval" :deps/manifest :deps}
+                org.pinkgorilla/goldly {:mvn/version "0.4.453"
+                                        :exclusions  [org.pinkgorilla/ui-site
+                                                      org.pinkgorilla/reval
+                                                      ]}}
    :exec-fn goldly.app/goldly-server-run!
    :exec-args {:profile "watch2"
                :config "demo/demo.edn"}}

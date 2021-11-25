@@ -1,35 +1,30 @@
 {:goldly {; build
-         :lazy true
+          :lazy true
           ; run-time
-         :autoload-cljs-dir ["demo/lib"
-                             "demo/page"]
-         :routes {:app {"" :demo/main
-                        "ipsum" :ipsum
-                        "template" :demo/template
-           
+          :autoload-cljs-dir ["demo/lib"
+                              "demo/page"]
+          :routes {:app {;app
+                         "" :demo/main
+                         "ipsum" :ipsum
+                         "ipsum-footer" :ipsum-footer
+                         "fotos" :demo/fotos
+
                          ;devtools
-                        "devtools/help" :devtools
-                        "devtools/pages" :pages
-                        "devtools/scratchpad" :scratchpad
-                        "devtools/viewer" :viewer
-                        "devtools/environment" :environment
-                        "devtools/theme" :theme}
-                  :api {"rdocument/ns" :rdocument/ns
-                        "rdocument/files" :rdocument/files
-                        ["rdocument/file/" :ns "/" :name] :rdocument/file}}}
+                         "devtools" :devtools
+                         "devtools/pages" :pages
+                         "devtools/scratchpad" :scratchpad
+                         "devtools/viewer" :viewer
+                         "devtools/environment" :environment
+                         "devtools/theme" :theme}
+                   :api {"rdocument/ns" :rdocument/ns
+                         "rdocument/files" :rdocument/files
+                         ["rdocument/file/" :ns "/" :name] :rdocument/file}}}
 
-:devtools {:rdocument  {:storage-root "rdocument/"
-                        :url-root "/api/rdocument/file/"}
-           :collections {:demo [:clj "demo/notebook/"]}}
+ :theme {:current
+         {:tailwind-full "light"
+          :tailwind-girouette false}}
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- }
+ :devtools {:rdocument  {:storage-root "rdocument/"
+                         :url-root "/api/rdocument/file/"}
+            :collections {:demo [:clj "demo/notebook/"]}}}
 

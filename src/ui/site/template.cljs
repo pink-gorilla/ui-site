@@ -28,7 +28,7 @@
 (defn header-menu [{:keys [brand brand-link items]}]
   (let [open? (r/atom false)]
     (fn []
-      [:header {:class "bg-gray-800"}
+      [:header {:class "bg-gray-800 h-16"}
        [:nav {:class "container px-6 py-4 mx-auto md:flex md:justify-between md:items-center"}
         [:div {:class "flex items-center justify-between"}
          [:a {:class "text-xl font-bold text-white transition-colors duration-300 transform md:text-2xl hover:text-indigo-400"
@@ -49,11 +49,21 @@
                                  " flex-col mt-2 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0")}]
               (map menu-item items))]])))
 
+;; footer
+
+(defn footer [{:keys [copyright right]}]
+  [:footer {:class "border-t h-16"}
+   [:div {:class "container flex items-center justify-between px-6 py-8 mx-auto"}
+    [:p {:class "text-gray-500"} copyright]
+    [:p {:class "font-medium text-gray-700"} right]]])
+
+;; splash
+
 (defn splash-message [{:keys [title title-small link-text link-url]}]
   [:section {:class "flex items-center justify-center bg-gray-800"
              :style {:height "500px"}}
    [:div {:class "text-center"}
-    [:p {:class "text-xl font-medium tracking-wider text-gray-300"}
+    [:div {:class "text-xl font-medium tracking-wider text-gray-300"}
      title-small]
     (into-text [:h2 {:class "mt-6 text-3xl font-bold text-white md:text-5xl"}]
                title)
@@ -61,21 +71,13 @@
      [:a {:class "px-8 py-2 text-lg font-medium text-white transition-colors duration-300 transform bg-indigo-600 rounded hover:bg-indigo-500"
           :href link-url} link-text]]]])
 
-;; footer
-
-(defn footer [{:keys [copyright right]}]
-  [:footer {:class "border-t"}
-   [:div {:class "container flex items-center justify-between px-6 py-8 mx-auto"}
-    [:p {:class "text-gray-500"} copyright]
-    [:p {:class "font-medium text-gray-700"} right]]])
-
 ;; components
 
 (defn- col [{:keys [title text]}]
   [:div {:class "px-6 py-8 overflow-hidden bg-white rounded-md shadow-md"}
    [:h2 {:class "text-xl font-medium text-gray-800"}
     title]
-   [:p {:class "max-w-md mt-4 text-gray-400"}
+   [:div {:class "max-w-md mt-4 text-gray-400"}
     text]])
 
 (defn cols-three [{:keys [title link-href link-text cols]}]
@@ -100,20 +102,9 @@
       (into-text
        [:h3 {:class "text-2xl font-semibold text-white"}]
        title)
-      [:p {:class "max-w-md mt-4 text-gray-400"} text]]
+      [:div {:class "max-w-md mt-4 text-gray-400"} text]]
      [:a {:class "block px-8 py-2 mt-6 text-lg font-medium text-center text-white transition-colors duration-300 transform bg-indigo-600 rounded md:mt-0 hover:bg-indigo-500"
           :href link-href} link-text]]]])
-
-(defn foto-bottom [{:keys [title text img-url]}]
-  [:section {:class "bg-white"}
-   [:div {:class "max-w-5xl px-6 py-16 mx-auto text-center"}
-    (into
-     [:h2 {:class "text-3xl font-semibold text-gray-800"}]
-     title)
-    [:p {:class "max-w-lg mx-auto mt-4 text-gray-600"}
-     text]
-    [:img {:class "object-cover object-center w-full mt-16 rounded-md shadow h-80"
-           :src img-url}]]])
 
 ;; components that need refactoring
 
@@ -128,12 +119,12 @@
 
 (defn- foto-col-text [{:keys [title text]}]
   [:div {:class "mt-8 md:mt-0 md:w-1/2"}
-   [:h3 {:class "text-2xl font-semibold text-gray-800"}
+   [:div {:class "text-2xl font-semibold text-gray-800"}
     title
         ;[:br] 
         ;" amet, consectetur"
     ]
-   [:p {:class "max-w-md mt-4 text-gray-600"}
+   [:div {:class "max-w-md mt-4 text-gray-600"}
     text]
    [:a {:href "#"
         :class "block mt-8 text-indigo-700 underline"}
@@ -152,6 +143,17 @@
     [:div {:class "items-center md:flex md:space-x-6"}
      [foto d]
      [foto-col-text d]]]])
+
+(defn foto-bottom [{:keys [title text img-url]}]
+  [:section {:class "bg-white"}
+   [:div {:class "max-w-5xl px-6 py-16 mx-auto text-center"}
+    (into
+     [:h2 {:class "text-3xl font-semibold text-gray-800"}]
+     title)
+    [:div {:class "max-w-lg mx-auto mt-4 text-gray-600"}
+     text]
+    [:img {:class "object-cover object-center w-full mt-16 rounded-md shadow h-80"
+           :src img-url}]]])
 
 (defn people []
   [:section {:class "bg-white"}

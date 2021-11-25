@@ -12,31 +12,39 @@
    {:href href} text])
 
 
-
-(defn splash []
-  [site/splash-message
-   {:link-text "On Github"
-    :link-url "https://github.com/pink-gorilla/goldly"
-    :title ["Goldly lets you create "
-            [:br]
-            "realtime dashboards powered by clojure"]
-    :title-small "open source"}])
-
 (defn header []
   [site/header-menu
-   {:brand "ui-site"
+   {:brand "fotos (ui-site)"
     :brand-link "/"
-    :items [{:text "ipsum" :link "/ipsum"}
-            {:text "main" :link "/"}
-            {:text "template" :link "/template"}
+    :items [{:text "main" :dispatch [:bidi/goto :demo/main] }  ; :link "/"
+            {:text "ipsum"  :dispatch [:bidi/goto :ipsum] } ; :link "/ipsum"
+            {:text "ipsum-footer" :dispatch [:bidi/goto :ipsum-footer]} ; :link "/ipsum-footer"
+            {:text "fotos"  :dispatch [:bidi/goto :demo/fotos] } ; :link "/template"
+            {:text "devtools"  :dispatch [:bidi/goto :devtools]} 
             {:text "feedback" :link "https://github.com/pink-gorilla/goldly/issues" :special? true}]}])
 
+(defn wrap-header [page]
+  (fn [route]
+    [layout/header-main  ; .w-screen.h-screen
+     [header]
+     [:div.bg-green-400.height-full
+      [page route]]]))
 
-(defn add-page-template [page name]
-  (let [wrapped-page (fn [route]
-                       [site/main-with-header
-                        [header]
-                        80
-                        [:div.bg-green-400.height-full
-                         [page]]])]
-    (add-page wrapped-page name)))
+(defn wrap-header-footer [page]
+  (fn [route]
+    [layout/header-main-footer
+     [header]  ;  [:div.bg-green-400.height-full
+     [page route]
+     [site/footer {:copyright "Open Source!"
+                   :right "Served by Goldly"}]]))
+
+(defn add-page-menu [page name]
+  (add-page (wrap-header page) name))
+
+(defn add-page-menu-footer [page name]
+  (add-page (wrap-header-footer page) name))
+
+
+ (rf/dispatch [:css/set-theme-component :tailwind-full "light"])
+ (rf/dispatch [:css/set-theme-component :tailwind-girouette false])
+
