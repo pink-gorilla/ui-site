@@ -1,5 +1,6 @@
 {:name "ui-site"
- :clj-require []
+  ; build
+ :lazy false
  :cljs-namespace [ui.site.template
                   ui.site.ipsum
                   ui.site.layout]
@@ -7,7 +8,7 @@
  :cljs-ns-bindings {'layout {'header-main ui.site.layout/header-main
                              'header-main-footer ui.site.layout/header-main-footer
                              'sidebar-main ui.site.layout/sidebar-main}
-                    
+
                     'site {'ipsum ui.site.ipsum/ipsum
 
                            ; menu
@@ -23,16 +24,11 @@
                            'bullet-points ui.site.template/bullet-points
                            'fotos-with-text ui.site.template/fotos-with-text
                            'cols-three ui.site.template/cols-three
-                           'splash-message ui.site.template/splash-message
-
-
-
-
-
-;                           
-                           }}
-
+                           'splash-message ui.site.template/splash-message}}
+ ; theme
  :theme {:available  {}
          :current {}}
- :pinkie {}
- :modules {}}
+ ; run
+ :clj-require []
+;
+ }

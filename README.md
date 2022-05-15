@@ -6,19 +6,11 @@ Everything related to web-site layout:
 
 ## End-Users
 - this project is NOT for you! Instead go to:
-- [notebook](https://github.com/pink-gorilla/notebook)
+- [goldly](https://github.com/pink-gorilla/goldly)
 
 ## Demo
 
 
 ```
-clojure -X:goldly 
+clojure -X:docs-run 
 ```
-
-in webly:
-
-```
-clojure -X:webly 
-```
-
-

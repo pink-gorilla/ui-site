@@ -1,0 +1,15 @@
+{:goldly {; build
+          :lazy true ; goldly is lazy, the extension is NOT.
+          ; run-time
+          :autoload-cljs-dir ["demo1/lib"
+                              "demo1/page"]
+          :routes {:app {;app
+                         "" :demo/main
+                         "ipsum" :ipsum
+                         "ipsum-footer" :ipsum-footer
+                         "fotos" :demo/fotos}}}
+
+ :theme {:current
+         {:tailwind-full "light"
+          :tailwind-girouette false}}}
+
