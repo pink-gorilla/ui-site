@@ -1,6 +1,6 @@
 {:name "ui-site"
   ; build
- :lazy false
+ :lazy-sci true
  :cljs-namespace [ui.site.template
                   ui.site.ipsum
                   ui.site.layout]
