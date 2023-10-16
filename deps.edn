@@ -2,14 +2,9 @@
          "resources" ; ext
          ]
  :deps
- {org.clojure/clojure    {:mvn/version "1.10.3"}}
+ {org.clojure/clojure    {:mvn/version "1.11.1"}}
  :aliases
- {;https://github.com/applied-science/deps-library
-  :release
-  {:extra-deps {applied-science/deps-library {:mvn/version "0.4.0"}}
-   :main-opts ["-m" "applied-science.deps-library"]}
-
-  ; https://github.com/weavejester/cljfmt
+ {; https://github.com/weavejester/cljfmt
   :cljfmt
   {:extra-deps {cljfmt/cljfmt {:mvn/version "RELEASE"}}
    :main-opts ["-m" "cljfmt.main" "check" "--indents" "cljfmt.edn"]}
@@ -25,11 +20,6 @@
   :outdated
   {:extra-deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
    :main-opts ["-m" "antq.core"]}
-
-  :check
-  {:extra-deps {athos/clj-check {:git/url "https://github.com/athos/clj-check.git"
-                                 :sha "0ca84df1357d71429243b99908303f45a934654c"}}
-   :main-opts ["-m" "clj-check.check"]}
 
   ; github ci  
   :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}

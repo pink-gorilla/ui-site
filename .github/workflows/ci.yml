@@ -32,7 +32,6 @@ jobs:
       if: ${{ matrix.os != 'windows-latest' }}
       run: clojure -M:cljfmt
       shell: bash
-    #    ./scripts/copy_res.sh
     #- name: clj-kondo
     #  run: clojure -M:lint
     #- name: test-clj

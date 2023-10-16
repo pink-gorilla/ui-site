@@ -11,7 +11,7 @@ Everything related to web-site layout:
 
 # demo
 
-The demo uses the extension manager from goldly to add reagent-table to goldly.
+The demo uses the extension manager from goldly to add this library to goldly.
 
 ```
 cd demo
