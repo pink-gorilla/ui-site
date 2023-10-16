@@ -1,7 +1,9 @@
-
+(ns demo1.page.fotos
+  (:require
+   [site]
+   [demo1.lib.site :refer [wrap-header]]))
 (defn fotos-page [r]
   [:div
-  
 
    [site/foto-right {:title "foto right"
                      :text (site/ipsum 1)
@@ -24,12 +26,7 @@
    [site/people]
 
    [site/fotos-with-text]
-   [site/bullet-points]
-   
-   ])
+   [site/bullet-points]])
 
-
-
-
-(add-page-menu fotos-page :demo/fotos)
+(def fotos-page-wrapped (wrap-header fotos-page))
 

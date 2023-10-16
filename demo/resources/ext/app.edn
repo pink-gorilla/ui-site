@@ -1,0 +1,10 @@
+{:name "demo1"
+ :cljs-routes  {"" demo1.page.main/main-page-wrapped
+                "ipsum" demo1.page.ipsum/ipsum-page-wrapped
+                "ipsum-footer" demo1.page.ipsum/ipsum-page-wrapped2
+                "fotos" demo1.page.fotos/fotos-page-wrapped}
+               
+ :sci-cljs-ns [demo.lib.site
+               demo.page.fotos
+               demo.page.ipsum
+               demo.page.main]}

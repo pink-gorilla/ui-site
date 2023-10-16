@@ -1,5 +1,8 @@
-2
-
+(ns demo1.page.main
+  (:require
+   [site]
+   [layout]
+   [demo1.lib.site :refer [wrap-header]]))
 
 (defn main-page []
   [:div
@@ -11,7 +14,6 @@
              [:br]
              "realtime dashboards powered by clojure"]
      :title-small "open source"}]
-
 
    [site/cols-three {:title ["Use-cases"
                              [:br]
@@ -27,14 +29,10 @@
      :text (site/ipsum 2)
      :link-text "Get In Touch"
      :link-href "#"}]
-   
+
    ;
    ])
 
-
-
-
-
-
-(add-page-menu main-page :demo/main)
+(def main-page-wrapped
+  (wrap-header main-page))
 

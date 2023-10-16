@@ -8,9 +8,16 @@ Everything related to web-site layout:
 - this project is NOT for you! Instead go to:
 - [goldly](https://github.com/pink-gorilla/goldly)
 
-## Demo
 
+# demo
+
+The demo uses the extension manager from goldly to add reagent-table to goldly.
 
 ```
-clojure -X:docs-run 
+cd demo
+clj -X:demo:npm-install
+clj -X:demo:compile
+clj -X:demo
 ```
+
+Open Browser at port 8080.

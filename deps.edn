@@ -31,54 +31,11 @@
                                  :sha "0ca84df1357d71429243b99908303f45a934654c"}}
    :main-opts ["-m" "clj-check.check"]}
 
-  :garamond
-  {:extra-deps {com.workframe/garamond {:mvn/version "0.4.0"}}
-   :main-opts ["-m" "garamond.main"]}
-
-  :npm-install
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.453"
-                                        :exclusions  [org.pinkgorilla/ui-site]}}
-   :exec-fn goldly.app/goldly-server-run!
-   :exec-args {:profile "npm-install"
-               :config {:goldly {}}}}
-
-
-  :goldly
-  {:extra-deps {org.pinkgorilla/goldly {:mvn/version "0.4.519"
-                                        :exclusions [org.pinkgorilla/ui-site]}
-                org.pinkgorilla/reval {:mvn/version "0.0.37"}
-                org.pinkgorilla/pinkie {:mvn/version "0.3.11"}
-                org.pinkgorilla/ui-repl {:mvn/version "0.0.43"} ; reframe in gold
-                }
-   :jvm-opts ["-Dmaven.wagon.rto=90000"]
-   :exec-fn goldly.app.build/goldly-build
-   :exec-args {:profile "compile2"
-               :config ["webly/config.edn" "goldly/config.edn"]}}
-
-
-; RUN SERVICES (keep running)
-  :docs-run
-  {:extra-deps {org.pinkgorilla/goldly-docs {:mvn/version "0.4.519"
-                                             :exclusions [org.pinkgorilla/ui-site]}}
-   :extra-paths ["demo"]
-   :jvm-opts ["-Dmaven.wagon.rto=90000"]
-   :exec-fn modular.system/start!
-   :exec-args {:profile "jetty"
-               :config ["webly/config.edn" "goldly/config.edn" "goldly/docs-config.edn"
-                        "demo/demo-config.edn"]
-               :services "goldly/docs-services.edn"}}
-
-  ; BUILD BUNDLE (then exit)
-  :docs-build
-  {:extra-deps {org.pinkgorilla/goldly-docs {:mvn/version "0.4.519"
-                                             :exclusions [org.pinkgorilla/ui-site]}}
-   :jvm-opts ["-Dmaven.wagon.rto=90000"]
-   :exec-fn goldly.app.build/goldly-build
-   :exec-args {:profile "compile2"
-               :config ["webly/config.edn" "goldly/config.edn" "goldly/docs-config.edn"]}}
-
-
-
+  ; github ci  
+  :build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}
+                 slipset/deps-deploy {:mvn/version "0.2.1"}
+                 babashka/fs {:mvn/version "0.0.5"}}
+          :ns-default build}
 
 ;
   }}

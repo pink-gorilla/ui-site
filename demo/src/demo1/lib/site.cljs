@@ -1,4 +1,8 @@
-
+(ns demo1.lib.site
+  (:require
+   [re-frame.core :as rf]
+   [site]
+   [layout]))
 
 (defn link-fn [fun text]
   [:a.bg-blue-300.cursor-pointer.hover:bg-red-700.m-1
@@ -11,16 +15,14 @@
   [:a.bg-blue-300.cursor-pointer.hover:bg-red-700.m-1
    {:href href} text])
 
-
 (defn header []
   [site/header-menu
-   {:brand "fotos (ui-site)"
+   {:brand "ui-site"
     :brand-link "/"
-    :items [{:text "main" :dispatch [:bidi/goto :demo/main] }  ; :link "/"
-            {:text "ipsum"  :dispatch [:bidi/goto :ipsum] } ; :link "/ipsum"
-            {:text "ipsum-footer" :dispatch [:bidi/goto :ipsum-footer]} ; :link "/ipsum-footer"
-            {:text "fotos"  :dispatch [:bidi/goto :demo/fotos] } ; :link "/template"
-            {:text "devtools"  :dispatch [:bidi/goto :devtools]} 
+    :items [{:text "main" :dispatch [:bidi/goto 'demo1.page.main/main-page-wrapped]}
+            {:text "ipsum"  :dispatch [:bidi/goto 'demo1.page.ipsum/ipsum-page-wrapped]}
+            {:text "ipsum-footer" :dispatch [:bidi/goto 'demo1.page.ipsum/ipsum-page-wrapped2]}
+            {:text "fotos"  :dispatch [:bidi/goto 'demo1.page.fotos/fotos-page-wrapped]}
             {:text "feedback" :link "https://github.com/pink-gorilla/goldly/issues" :special? true}]}])
 
 (defn wrap-header [page]
@@ -38,13 +40,6 @@
      [site/footer {:copyright "Open Source!"
                    :right "Served by Goldly"}]]))
 
-(defn add-page-menu [page name]
-  (add-page (wrap-header page) name))
-
-(defn add-page-menu-footer [page name]
-  (add-page (wrap-header-footer page) name))
-
-
- (rf/dispatch [:css/set-theme-component :tailwind-full "light"])
- (rf/dispatch [:css/set-theme-component :tailwind-girouette false])
+; (rf/dispatch [:css/set-theme-component :tailwind-full "light"])
+; (rf/dispatch [:css/set-theme-component :tailwind-girouette false])
 
