@@ -1,10 +1,10 @@
-{:name "ui-site"
+{:extension/name :ui-site
   ; build
- :lazy true
- :cljs-namespace [ui.site.template
+ :cljs/when-defined :sci
+ :cljs/namespace [ui.site.template
                   ui.site.ipsum
                   ui.site.layout]
- :cljs-ns-bindings {'ui.site.layout {'header-main ui.site.layout/header-main
+ :cljs/ns-bindings {'ui.site.layout {'header-main ui.site.layout/header-main
                                      'header-main-footer ui.site.layout/header-main-footer
                                      'sidebar-main ui.site.layout/sidebar-main}
                     'ui.site.ipsum {'random-paragraph ui.site.ipsum/random-paragraph
